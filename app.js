@@ -7,6 +7,9 @@ const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const path = require('path');
 const ExpressError = require('./utils/ExpressError.js');
+const User = require("./models/user.js");
+const Blog = require("./models/blog.js");
+const Comment = require("./models/comment.js");
 
 async function connectDB() {
     await mongoose.connect(process.env.DB_URL)
@@ -25,6 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.get("/test",(req,res)=>{
     res.send("Server is running");
 });
@@ -40,4 +44,5 @@ app.use((err, req, res, next) => {
 
 app.listen(port, ()=>{
     console.log(`Server is running on port ${port}`);
+    console.log(`http://localhost:${port}`);
 });
