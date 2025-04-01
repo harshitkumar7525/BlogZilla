@@ -3,6 +3,7 @@ if(process.env.NODE_ENV !== 'production') {
 }
 const express = require('express');
 const app = express();
+const ejsMate = require('ejs-mate');
 const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const path = require('path');
@@ -27,6 +28,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
+app.engine("ejs",ejsMate);
 
 
 app.get("/test",(req,res)=>{
