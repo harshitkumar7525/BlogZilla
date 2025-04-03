@@ -63,7 +63,7 @@ const sessionOptions = {
 };
 
 app.get("/",(req,res)=>{
-    res.redirect("/home");
+    res.redirect("/blogs");
 });
 
 app.use(session(sessionOptions));
