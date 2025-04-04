@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlogZilla</title>
+    <%- include('./styling.ejs') %>
+  </head>
+  <body>
+    <div id="container">
+      <div
+        style="
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <spline-viewer
+          url="https://prod.spline.design/nnd8cWfoee41iJ91/scene.splinecode"
+        ></spline-viewer>
+      </div>
+    </div>
+    <div id="text-box">
+      <div class="text">
+        <h1>Welcome to <span class="autotype"></span></h1>
+      </div>
+      <p>Your space to write, read, and inspire</p>
+
+      <div class="btns">
+        <% if(!currUser) { %>
+        <div>
+          <a href="/login"><button class="btn btn-primary">Login</button></a>
+        </div>
+        <div>
+          <a href="/signup"
+            ><button class="btn btn-secondary">Sign up</button></a
+          >
+        </div>
+        <% } else { %>
+        <div>
+          <a href="/blogs"
+            ><button class="btn btn-primary">Explore our Blogs !</button></a
+          >
+        </div>
+        <% } %>
+      </div>
+    </div>
+    
+<div class="hide"></div>
+    <%- include('./scripts.ejs') %>
+  </body>
+</html>

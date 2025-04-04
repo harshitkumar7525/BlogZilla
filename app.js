@@ -82,13 +82,17 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get("/",(req,res)=>{
+    res.redirect("/home");
+})
+
 app.use("/blogs",blogRouter);
 app.use("/blogs/:id/comment",commentRouter);
 app.use("/", userRouter);
 
-app.get("/test",(req,res)=>{
-    res.send("Server is running");
-});
+app.get("/home",(req,res)=>{
+    res.render("./home/home.ejs");
+})
 
 app.all("*", (req, res, next) => {
     next(new ExpressError(404, "Page Not Found"));
