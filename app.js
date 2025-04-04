@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
 const express = require('express');
@@ -23,42 +23,42 @@ async function connectDB() {
     await mongoose.connect(process.env.DB_URL)
 }
 connectDB()
-.then(()=>{
-    console.log('DB connected');
-})
-.catch((err)=>{
-    console.log(err);
-});
+    .then(() => {
+        console.log('DB connected');
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.engine("ejs",ejsMate);
+app.engine("ejs", ejsMate);
 app.use(methodOverride('_method'));
 
 const store = MongoStore.create({
-    mongoUrl:process.env.DB_URL,
+    mongoUrl: process.env.DB_URL,
     crypto: {
         secret: process.env.COOKIE_SECRET,
     },
-    touchAfter: 24* 3600,
+    touchAfter: 24 * 3600,
 });
 
-store.on('error',()=>{
+store.on('error', () => {
     console.log("Error im mongo store")
 });
 
 const sessionOptions = {
     store,
     secret: process.env.COOKIE_SECRET,
-    resave:false,
+    resave: false,
     saveUninitialized: true,
     cookie: {
-        expires: Date.now() + 7*24*3600*1000,
-        maxAge: 7*24*3600*1000,
-        httpOnly:true
+        expires: Date.now() + 7 * 24 * 3600 * 1000,
+        maxAge: 7 * 24 * 3600 * 1000,
+        httpOnly: true
     }
 };
 
@@ -78,15 +78,15 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get("/",(req,res)=>{
+app.get("/", (req, res) => {
     res.redirect("/home");
 })
 
-app.use("/blogs",blogRouter);
-app.use("/blogs/:id/comment",commentRouter);
+app.use("/blogs", blogRouter);
+app.use("/blogs/:id/comment", commentRouter);
 app.use("/", userRouter);
 
-app.get("/home",(req,res)=>{
+app.get("/home", (req, res) => {
     res.render("./home/home.ejs");
 })
 
@@ -99,7 +99,7 @@ app.use((err, req, res, next) => {
     res.status(status).render("error.ejs", { err })
 });
 
-app.listen(port, ()=>{
+app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
     console.log(`http://localhost:${port}`);
 });
