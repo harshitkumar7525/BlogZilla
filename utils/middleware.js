@@ -1,6 +1,6 @@
 const Blog = require('../models/blog.js');
 const Comment = require('../models/comment.js');
-const { blogSchema, commentSchema } = require('../Schema.js');
+const { blogSchema, commentSchema } = require('./Schema.js');
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
         req.session.redirectUrl = req.originalUrl;

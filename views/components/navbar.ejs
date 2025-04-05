@@ -16,6 +16,8 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Trending</a>
           </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
           <% if(!currUser) { %>
           <li class="nav-item">
             <a class="nav-link" href="/login">Log in</a>
@@ -23,7 +25,13 @@
           <li class="nav-item">
             <a class="nav-link" href="/signup">Sign up</a>
           </li>
-          <% }  else { %> 
+          <% }  else { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/blogs/new">Add a Blog</a>
+            </li>
+            <li class="nav-item">
+              <span class="nav-link"><%= currUser.username %></span>
+            </li>
           <li class="nav-item">
             <a class="nav-link" href="/logout">Log out</a>
           </li>
