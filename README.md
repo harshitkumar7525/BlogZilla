@@ -46,4 +46,15 @@ Here is a list of the core dependencies used in the project:
 - **ejs**: Embedded JavaScript for templating
 - **mongoose**: MongoDB object modeling tool
 - **dotenv**: To manage environment variables
-
+- **ejs**: Embedded JavaScript for templating
+- **ejs-mate**: Layout and partial support for EJS
+- **express**: Fast, unopinionated, minimalist web framework for Node.js
+- **express-session**: Session middleware for Express
+- **joi**: Data validation library
+- **method-override**: HTTP method override middleware
+- **mongoose**: MongoDB object modeling tool
+- **multer**: Middleware for handling file uploads
+- **multer-storage-cloudinary**: Cloudinary storage engine for Multer
+- **passport**: Authentication middleware for Node.js
+- **passport-local**: Local authentication strategy for Passport
+- **passport-local-mongoose**: Mongoose plugin for Passport-Local
